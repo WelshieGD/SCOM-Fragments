@@ -1,0 +1,144 @@
+  <TypeDefinitions>
+    <EntityTypes>
+      <ClassTypes>
+        <ClassType ID="F12.baltit.AppServer" Base="Windows!Microsoft.Windows.LocalApplication" Accessibility="Public" Abstract="false" Hosted="true" Singleton="false" />      
+        <ClassType ID="F12.baltit.AppServer.Queue" Base="Windows!Microsoft.Windows.ApplicationComponent" Accessibility="Public" Abstract="false" Hosted="true" Singleton="false">
+          <Property ID="QueueName" Key="true" Type="string" />
+        </ClassType>
+      </ClassTypes>
+      <RelationshipTypes>
+        <!-- In this section, provide the Source (i.e. Parent) and Target (i.e. Child)
+             for this relationship. Also, review and update the Base attribute. 
+             More information can be found in the Management Pack Development Kit: 
+             http://msdn.microsoft.com/en-us/library/ee533533.aspx -->
+        <RelationshipType ID="F12.baltit.AppServer.Hosts.Queue" Base="System!System.Hosting" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="F12.baltit.AppServer"/>
+          <Target ID="Target" Type="F12.baltit.AppServer.Queue"/>
+        </RelationshipType>        
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+ <Monitoring>
+    <Discoveries>
+      <Discovery ID="F12.baltit.AppServer.Class.Discovery" Target="Windows!Microsoft.Windows.Server.OperatingSystem" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+	  <!-- We choose Microsoft.Windows.Server.OperatingSystem as the preferred target class to ensure this will run on all Windows Servers, but wont create duplicates on clusters -->
+	    <Category>Discovery</Category>
+        <DiscoveryTypes>
+		  <DiscoveryClass TypeID="F12.baltit.AppServer">
+		  </DiscoveryClass>
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider">
+          <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName> <!-- You may need to add or remove Host references in this line depending on your target -->
+          <RegistryAttributeDefinitions>
+            <RegistryAttributeDefinition>
+              <AttributeName>##UniqueID##RegKeyExists</AttributeName>
+              <Path>##RegKeyPath##</Path>
+              <PathType>0</PathType>  <!-- 0=regKey 1=regValue -->
+              <AttributeType>0</AttributeType>  <!-- 0=CheckIfExists (Boolean) 1=treat data as (String) 2=treat data as (Integer) -->
+            </RegistryAttributeDefinition>			
+          </RegistryAttributeDefinitions>
+          <Frequency>86400</Frequency>  <!-- seconds -->
+          <ClassId>$MPElement[Name="##CompanyID##.##AppName##.##UniqueID##.Class"]$</ClassId>
+          <InstanceSettings>
+            <Settings>
+              <Setting>
+                <Name>$MPElement[Name="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Name>
+                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+              </Setting>
+              <Setting>
+                <Name>$MPElement[Name="System!System.Entity"]/DisplayName$</Name>
+                <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+              </Setting>		  
+            </Settings>
+          </InstanceSettings>
+          <Expression>
+            <SimpleExpression>
+              <ValueExpression>
+                <XPathQuery Type="Boolean">Values/##UniqueID##RegKeyExists</XPathQuery>  <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+              </ValueExpression>
+              <Operator>Equal</Operator>  <!-- Common options for SimpleExpression Operator are "Equal" "NotEqual" "Greater" "Less" "GreaterEqual" "LessEqual" "Like" "NotLike" -->
+              <ValueExpression>
+                <Value Type="Boolean">true</Value>  <!-- Common options for XPathQuery Type are "Boolean" "String" "Integer" "Double" -->
+              </ValueExpression>
+            </SimpleExpression>
+          </Expression>
+        </DataSource>
+      </Discovery>
+      <Discovery ID=
+      <Discovery ID="F12.baltit.Discover.AppServer.Queue" Target="F12.baltit.AppServer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+        <Category>Discovery</Category>
+        <DiscoveryTypes>
+          <DiscoveryClass TypeID="F12.baltit.AppServer.Queue" />
+          <DiscoveryRelationship TypeID="F12.baltit.AppServer.Hosts.Queue" />
+        </DiscoveryTypes>
+        <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.TimedPowerShell.DiscoveryProvider">
+          <IntervalSeconds>900</IntervalSeconds>
+          <SyncTime />
+          <ScriptName>QueueDiscovery.ps1</ScriptName>
+          <ScriptBody>
+param ($sourceId, $managedEntityId, $computerName)
+
+$api = New-Object -ComObject 'MOM.ScriptAPI'
+$discoveryData = $api.CreateDiscoveryData(0, $sourceId, $managedEntityId)
+
+$Folders = Get-ChildItem -Path "c:\VSExample\PShellFolder" | where {$_.psIsContainer -eq $true}
+$api.LogScriptEvent("Validate PShell Folder Discovery",123,0,$Folders)
+
+ForEach ($Folder in $Folders)
+{
+$instance = $discoveryData.CreateClassInstance("$MPElement[Name='F12.baltit.AppServer.Queue']$")
+$instance.AddProperty("$MPElement[Name='Windows!Microsoft.Windows.Computer']/PrincipalName$",$computerName)
+$instance.AddProperty("$MPElement[Name='F12.baltit.AppServer.Queue']/QueueName$",$Folder.Name)
+$discoveryData.AddInstance($instance)
+}
+# Testing
+# $api.Return($discoveryData)
+# Path .\PShellAppServerFolderDiscovery.ps1 -sourceId '{7d8ddaec-801c-4b48-a4ac-241ef34c258e}' -managedEntityId '{7d8ddaec-801c-4b48-a4ac-24 }' -computerName "Test"
+
+$discoveryData
+</ScriptBody>
+          <Parameters>
+            <Parameter>
+              <Name>sourceID</Name>
+              <Value>$MPElement$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>managedEntityID</Name>
+              <Value>$Target/Id$</Value>
+            </Parameter>
+            <Parameter>
+              <Name>computerName</Name>
+              <Value>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</Value>
+            </Parameter>
+          </Parameters>
+          <TimeoutSeconds>300</TimeoutSeconds>
+        </DataSource>
+      </Discovery>
+    </Discoveries>
+  </Monitoring>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="F12.baltit.AppServer">
+          <Name>Discover F12 baltit AppServer </Name>
+          <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="F12.baltit.AppServer.Queue">
+          <Name>Discover F12 baltit AppServer Folders</Name>
+          <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="F12.baltit.AppServer.Queue" SubElementID="QueueName">
+          <Name>Queue Name</Name>
+          <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="F12.baltit.AppServer.Hosts.Queue">
+          <Name>Relationship - F12 baltit Application Server hosts Queue</Name>
+          <Description></Description>
+        </DisplayString>
+        <DisplayString ElementID="F12.baltit.Discover.AppServer.Queue">
+          <Name>Discover F12 baltit Queues</Name>
+          <Description>Description for the new discovery.</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
