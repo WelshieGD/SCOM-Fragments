@@ -20,7 +20,7 @@ In this fragment you need to replace:
   ##CompanyID##
   ##AppName##
   ##ServiceName##
-  ##Target# (##Target##)
+  ##Target##
 
 This fragment depends on references:
   RequiredReference: Alias="System", ID="System.Library"
@@ -265,7 +265,7 @@ Based on the work of Kevin Holman - Fragment Library
         </DisplayString>
       </DisplayStrings>     
 <KnowledgeArticles>
-      <KnowledgeArticle ElementID="M##CompanyID##.##AppName##.BusinessHours.Monitor.##ServiceName##">
+      <KnowledgeArticle ElementID="##CompanyID##.##AppName##.BusinessHours.Monitor.##ServiceName##">
         <MamlContent>
           <section xmlns="http://schemas.microsoft.com/maml/2004/10">
             <title>Start Time</title>
