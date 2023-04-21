@@ -20,8 +20,8 @@ In this fragment you need to replace:
   ##CompanyID##
   ##AppName##
   ##RegKeyPath##
-  ##RegValuePath##
   ##UniqueID##
+  ##ClassID##
 
 This fragment depends on references:
   RequiredReference: Alias="System", ID="System.Library"
