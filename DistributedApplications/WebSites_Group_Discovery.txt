@@ -211,11 +211,41 @@ This fragment depends on references:
 		  	  </Presentation>
 		  <Target>$MPElement[Name="##CompanyID##.##AppName##.WebServer.Class.Group"]$</Target>
       </View>
+<View ID="##CompanyID##.##AppName##.WebServer.State.View" Accessibility="Internal" Enabled="true" Target="##AliasConcrete##!Microsoft.Windows.InternetInformationServices.10.0.WebSite" TypeID="SC!Microsoft.SystemCenter.StateViewType" Visible="true">
+        <Category>Custom</Category>
+                <Criteria />
+
+	  <Presentation>
+		  <ColumnInfo Index="0" SortIndex="0" Width="22" Grouped="true" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>State</Name>
+            <Id>State</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="1" SortIndex="-1" Width="54" Grouped="false" Sorted="false" IsSortable="false" Visible="true" SortOrder="Ascending">
+            <Name>Maintenance Mode</Name>
+            <Id>MonitoringObjectInMaintenanceMode</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Path</Name>
+            <Id>MonitoringObjectPath</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Name</Name>
+            <Id>DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="4" SortIndex="-1" Width="22" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+            <Name>Key</Name>
+            <Id>Key</Id>
+          </ColumnInfo>
+         
+		  	  </Presentation>
+		  <Target>$MPElement[Name="##CompanyID##.##AppName##.WebServer.Class.Group"]$</Target>
+      </View>
 	</Views>
 		<!-- Folders is specified in AppServer -->
 		<Folders/> 
 		<FolderItems>
 			<FolderItem ElementID="##CompanyID##.##AppName##.WebServer.Alert.View" ID="F12.Payments.ApplicationServer.Alert.View.FolderItem" Folder="F12.Payments.Root.Folder" />
+			<FolderItem ElementID="##CompanyID##.##AppName##.WebServer.State.View" ID="F12.Payments.ApplicationServer.State.View.FolderItem" Folder="F12.Payments.Root.Folder" />
 		</FolderItems>
 	</Presentation>
 	<LanguagePacks>
@@ -233,16 +263,21 @@ This fragment depends on references:
 					<Name>Active Alerts - Web Server</Name>
 					<Description />
 				</DisplayString>
+
+				<DisplayString ElementID="##CompanyID##.##AppName##.WebServer.State.View">
+					<Name>Web Server State</Name>
+					<Description />
+				</DisplayString>
 				        <DisplayString ElementID="##CompanyID##.##AppName##.WebServer.Class.Group.Availability.Dependency.Monitor">
           <Name>##CompanyID## ##AppName## WebServer Group Availability Dependency Monitor</Name>
         </DisplayString>
-        <DisplayString ElementID="##CompanyID##.##AppName##.##UniqueID##.Class.Group.Configuration.Dependency.Monitor">
+        <DisplayString ElementID="##CompanyID##.##AppName##.WebServer.Class.Group.Configuration.Dependency.Monitor">
           <Name>##CompanyID## ##AppName## WebServer Group Configuration Dependency Monitor</Name>
         </DisplayString>
-        <DisplayString ElementID="##CompanyID##.##AppName##.##UniqueID##.Class.Group.Performance.Dependency.Monitor">
+        <DisplayString ElementID="##CompanyID##.##AppName##.WebServer.Class.Group.Performance.Dependency.Monitor">
           <Name>##CompanyID## ##AppName## WebServer Group Performance Dependency Monitor</Name>
         </DisplayString>
-        <DisplayString ElementID="##CompanyID##.##AppName##.##UniqueID##.Class.Group.Security.Dependency.Monitor">
+        <DisplayString ElementID="##CompanyID##.##AppName##.WebServer.Class.Group.Security.Dependency.Monitor">
           <Name>##CompanyID## ##AppName## WebServer Group Security Dependency Monitor</Name>
         </DisplayString>
 			</DisplayStrings>
