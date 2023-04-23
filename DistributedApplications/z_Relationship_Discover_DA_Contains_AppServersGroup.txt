@@ -1,0 +1,8 @@
+  <RuleId>$MPElement$</RuleId>
+  <GroupInstanceId>$Target/Id$</GroupInstanceId>
+  <MembershipRules>
+    <MembershipRule>
+      <MonitoringClass>$MPElement[Name="Fabrikam.Payments.DA.ComponentGroup.ApplicationServers"]$</MonitoringClass>
+      <RelationshipClass>$MPElement[Name="Fabrikam.Payments.DA.contains.Fabrikam.Payments.DA.ComponentGroup.ApplicationServers"]$</RelationshipClass>
+    </MembershipRule>
+  </MembershipRules>

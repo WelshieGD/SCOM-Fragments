@@ -1,0 +1,58 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TypeDefinitions>
+    <EntityTypes>
+      <RelationshipTypes>
+
+        <!-- In this section, provide the Source (i.e. Parent) and Target (i.e. Child)
+             for this relationship. Also, review and update the Base attribute. 
+             More information can be found in the Management Pack Development Kit: 
+             http://msdn.microsoft.com/en-us/library/ee533533.aspx -->
+        <RelationshipType ID="Fabrikam.Payments.DA.contains.Fabrikam.Payments.DA.ComponentGroup.ApplicationServers" Base="System!System.Containment" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="Fabrikam.Payments.DA"/>
+          <Target ID="Target" Type="Fabrikam.Payments.DA.ComponentGroup.ApplicationServers"/>
+        </RelationshipType>
+        <RelationshipType ID="Fabrikam.PaymentsDA.ComponentGroup.ApplicationServers.Contains.AppServers" Base="System!System.Containment" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="Fabrikam.Payments.DA.ComponentGroup.ApplicationServers"/>
+          <Target ID="Target" Type="Fabrikam.Payments.AppServer"/>
+        </RelationshipType>
+        <RelationshipType ID="Fabrikam.Payments.DA.contains.Fabrikam.Payments.DA.ComponentGroup.PaymentsDatabases" Base="System!System.Containment" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="Fabrikam.Payments.DA"/>
+          <Target ID="Target" Type="Fabrikam.Payments.DA.ComponentGroup.PaymentsDatabases"/>
+        </RelationshipType>
+        <RelationshipType ID="Fabrikam.Payments.DA.ComponentGroup.PaymentsDatabases.ContainsSQLDatabases" Base="System!System.Containment" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="Fabrikam.Payments.DA.ComponentGroup.PaymentsDatabases"/>
+          <Target ID="Target" Type="MSL!Microsoft.SQLServer.Database"/>
+        </RelationshipType>
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+
+        <!-- This is the string users of the Operations Console and Web Console will see. 
+             Descriptions are also helpful when the user is doing a search in the Console. -->
+        <DisplayString ElementID="Fabrikam.Payments.DA.contains.Fabrikam.Payments.DA.ComponentGroup.ApplicationServers">
+          <Name>Fabrikam Payments DA contains Fabrikam Payements Application Server Component Group</Name>
+          <Description></Description>
+        </DisplayString>
+
+        <DisplayString ElementID="Fabrikam.Payments.DA.contains.Fabrikam.Payments.DA.ComponentGroup.PaymentsDatabases">
+          <Name>Fabrikam Payments DA contains Fabrikam Payements Databases Component Group</Name>
+          <Description></Description>
+        </DisplayString>
+
+        <DisplayString ElementID="Fabrikam.PaymentsDA.ComponentGroup.ApplicationServers.Contains.AppServers">
+          <Name>Fabrikam Payments Component Group App Servers contains App Servers</Name>
+          <Description></Description>
+        </DisplayString>
+
+        <DisplayString ElementID="Fabrikam.Payments.DA.ComponentGroup.PaymentsDatabases.ContainsSQLDatabases">
+          <Name>Fabrikam Payments Component Group Payments Databases Contains SQL Databases</Name>
+          <Description></Description>
+        </DisplayString>
+
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
