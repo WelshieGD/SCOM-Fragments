@@ -216,25 +216,130 @@ This fragment depends on references:
                 <Criteria />
 
 	  <Presentation>
-		  <ColumnInfo Index="0" SortIndex="0" Width="22" Grouped="true" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+   <Presentation>
+          <ColumnInfo Index="0" SortIndex="0" Width="100" Grouped="false" Sorted="true" IsSortable="true" Visible="true" SortOrder="Descending">
             <Name>State</Name>
-            <Id>State</Id>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite-*-20d3db1e-985d-8232-864f-96d636eaf908-*-Health</Id>
           </ColumnInfo>
-          <ColumnInfo Index="1" SortIndex="-1" Width="54" Grouped="false" Sorted="false" IsSortable="false" Visible="true" SortOrder="Ascending">
+          <ColumnInfo Index="1" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
             <Name>Maintenance Mode</Name>
-            <Id>MonitoringObjectInMaintenanceMode</Id>
+            <Id>InMaintenanceMode</Id>
           </ColumnInfo>
           <ColumnInfo Index="2" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
-            <Name>Path</Name>
-            <Id>MonitoringObjectPath</Id>
+            <Name>Name</Name>
+            <Id>Name</Id>
           </ColumnInfo>
           <ColumnInfo Index="3" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
-            <Name>Name</Name>
-            <Id>DisplayName</Id>
+            <Name>Path</Name>
+            <Id>Path</Id>
           </ColumnInfo>
-          <ColumnInfo Index="4" SortIndex="-1" Width="22" Grouped="false" Sorted="false" IsSortable="true" Visible="true" SortOrder="Ascending">
+          <ColumnInfo Index="4" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Display Name</Name>
+            <Id>System.Entity/DisplayName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="5" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
             <Name>Key</Name>
-            <Id>Key</Id>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/SiteID</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="6" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Description</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/Description</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="7" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Server Bindings</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/ServerBindings</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="8" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Secure Bindings</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/SecureBindings</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="9" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Folder path</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/Path</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="10" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Log File Directory</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/LogFileDirectory</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="11" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>LogfileType</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/LogFileType</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="12" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>BITS</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/BITS</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="13" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Log File Pattern</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/LogFilePattern</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="14" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Logging Enabled</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/LoggingEnabled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="15" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Anonymous Username</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/AnonymousUsername</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="16" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Cache ISAPI</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/CacheISAPI</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="17" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Allow Keep Alive</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/AllowKeepAlive</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="18" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>URL</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/URL</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="19" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Perf Counter Instance Name</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.WebSite/PerfCounterInstance</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="20" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Application Pool Name</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/ApplicationPoolName</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="21" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Failed Request Tracing Enabled</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/FailedRequestTracingEnabled</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="22" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Failed Request Tracing Directory</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/FailedRequestTracingDirectory</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="23" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="false" Visible="false" SortOrder="Ascending">
+            <Name>Start Automatically</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/StartAutomatically</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="24" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Connection Time-out (seconds)</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/ConnectionTimeout</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="25" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Maximum Concurrent Connections</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/MaxConnections</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="26" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>Maximum Bandwidth (Bytes/second)</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/MaximumBandwidth</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="27" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>ID</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite/ID</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="28" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>IIS 10 Application Pool</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.ApplicationPool</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="29" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>IIS 10 ASP.NET Web Service Endpoint</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.AspNetWebServiceEndpoint</Id>
+          </ColumnInfo>
+          <ColumnInfo Index="30" SortIndex="-1" Width="100" Grouped="false" Sorted="false" IsSortable="true" Visible="false" SortOrder="Ascending">
+            <Name>IIS 10 ASP.NET Application Endpoint</Name>
+            <Id>Microsoft.Windows.InternetInformationServices.10.0.AspNetWebApplicationEndpoint</Id>
           </ColumnInfo>
          
 		  	  </Presentation>
