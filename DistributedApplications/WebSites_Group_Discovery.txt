@@ -216,7 +216,6 @@ This fragment depends on references:
                 <Criteria />
 
 	  <Presentation>
-   <Presentation>
           <ColumnInfo Index="0" SortIndex="0" Width="100" Grouped="false" Sorted="true" IsSortable="true" Visible="true" SortOrder="Descending">
             <Name>State</Name>
             <Id>Microsoft.Windows.InternetInformationServices.10.0.WebSite-*-20d3db1e-985d-8232-864f-96d636eaf908-*-Health</Id>
