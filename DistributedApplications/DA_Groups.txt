@@ -1,0 +1,86 @@
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!-- 
+%%
+Description:
+  CompanyID - is a short abbreviation for your company with NO SPACES OR SPECIAL CHARACTERS ALLOWED
+  AppName - is a short name for your app with NO SPACES OR SPECIAL CHARACTERS ALLOWED
+
+	
+Version: 1.2
+LastModified: 07-Jun-2019
+
+Version: GD2.0
+
+%%
+
+In this fragment you need to replace:
+  ##CompanyID## F12
+  ##AppName## Payments
+  
+Application Server Group = ##CompanyID##.##AppName##.ApplicationServer.Class.Group
+WebServer Group = ##CompanyID##.##AppName##.Weberver.Class.Group
+
+
+This fragment depends on references:
+  RequiredReference: Alias="System", ID="System.Library"
+  RequiredReference: Alias="Windows", ID="Microsoft.Windows.Library"
+ RequiredReference: Alias="MSIL", ID="Microsoft.SystemCenter.InstanceGroup.Library"
+	
+@@Author=Kevin Holman@@
+@@UpdatedBy=Graham Davies@@
+-->
+  <TypeDefinitions>
+    <EntityTypes>
+	<ClassTypes>
+        <ClassType ID="##CompanyID##.##AppName##.DA" Base="System!System.Service" Accessibility="Public" Abstract="false" Hosted="false" Singleton="true" />
+      </ClassTypes>
+	<RelationshipTypes>
+
+        <!-- In this section, provide the Source (i.e. Parent) and Target (i.e. Child)
+             for this relationship. Also, review and update the Base attribute. 
+             More information can be found in the Management Pack Development Kit: 
+             http://msdn.microsoft.com/en-us/library/ee533533.aspx -->
+        <RelationshipType ID="##CompanyID##.##AppName##.DA.contains.Group.ApplicationServer" Base="System!System.Containment" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="##CompanyID##.##AppName##.DA"/>
+          <Target ID="Target" Type="##CompanyID##.##AppName##.ApplicationServer.Class.Group"/>
+        </RelationshipType>
+        <RelationshipType ID="##CompanyID##.##AppName##.DA.contains.Group.WebServer" Base="System!System.Containment" Abstract="false" Accessibility="Internal">
+          <Source ID="Source" Type="##CompanyID##.##AppName##.DA"/>
+          <Target ID="Target" Type="##CompanyID##.##AppName##.WebServer.Class.Group"/>
+        </RelationshipType>
+
+      </RelationshipTypes>
+    </EntityTypes>
+  </TypeDefinitions>
+
+	*** ADD IN DISCOVERIES ***
+
+	*** ADD IN DEPENDENCY ROLL UP MONITORS ***
+
+  <LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+
+        <!-- This is the string users of the Operations Console and Web Console will see. 
+             Descriptions are also helpful when the user is doing a search in the Console. -->
+        <DisplayString ElementID="##CompanyID##.##AppName##.DA">
+          <Name>##CompanyID## ##AppName## Application</Name>
+          <Description></Description>
+        </DisplayString>
+		
+        <DisplayString ElementID="##CompanyID##.##AppName##.DA.contains.Group.ApplicationServer">
+          <Name>##CompanyID## ##AppName## DA contains Application Server Component Group</Name>
+          <Description></Description>
+        </DisplayString>
+
+        <DisplayString ElementID="##CompanyID##.##AppName##.DA.contains.Group.WebServer">
+          <Name>##CompanyID## ##AppName## DA contains WebServer Server Component Grou</Name>
+          <Description></Description>
+        </DisplayString>
+
+*** ADD IN DISPLAY STRINGS ***
+
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks>
+</ManagementPackFragment>
